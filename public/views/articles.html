@@ -1,0 +1,12 @@
+<h2> Liste des articles </h2>
+Search: <input type="text" ng-model="search.name">
+<ul>
+	<li ng-repeat="article in articles | filter: search">
+		<a href="#/articles/{{article._id}}">--{{article.name}}</a>
+	</xli>
+</ul>
+<br />Nouvel Article: <br />
+<br />Denomination: <input type="text" ng-model="newArticle.name">
+<br />Prix: <input type="number" ng-model="newArticle.price">
+<br />Reference: <input type="text" ng-model="newArticle.reference">
+<br /><button ng-click="save()">Creer</button><button ng-click="goToOrders()">Voir les commandes</button>

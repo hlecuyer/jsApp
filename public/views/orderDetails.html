@@ -1,0 +1,30 @@
+	<h1> Detail de la commande {{ order._id }}</h1><br/>
+	<p>Numero de commande: {{ order._id }}</p>
+	<p ng-show="!editing">Heure de livraison: {{ order.deliveryDate | date:"dd/MM/yyyy ' a ' HH:mm " }} </p>
+	<p ng-show="!editing">Status:  {{ order.status }} </p>
+	<span ng-show="editing">Heure de livraison: </span><input type="datetime" ng-show="editing" ng-model="order.deliveryDate">
+	<br /><label ng-show="editing" for="status"> Status: </label>
+    <select ng-show="editing" name="status" ng-model="order.status">
+      <option ng-show="editing" value="En cours">En cours</option>
+      <option ng-show="editing" value="Terminee">Terminee</option>
+    </select>
+	<ul>
+ 	   <li ng-repeat ='(key, article) in order.articles'>
+			<span>Article:	{{article.articleId.name}}<span><br />
+			<div><span ng-show="!editing">      Quantite: {{article.quantity}}</span>
+				<span ng-show="editing">      Quantite: </span><input id='inputId' ng-show='editing' type='number' ng-model='article.quantity' />
+			</div>
+			<button ng-show="editing" ng-click="removeArticle(key)")">Supprimer</button><br ng-show="editing" />
+    	    <br />
+    	</li>
+
+	</ul>
+	<button ng-show="!editing" ng-click="edit()">edit</button>
+	<button ng-show="!editing" ng-click="remove()">remove</button>
+	<button ng-show="editing" ng-click="update()">Update</button>
+	<button ng-show="editing" ng-click="cancel()">Cancel</button>
+	<br /><label ng-show="editing" for="articles"> Ajouter un article: </label>
+	<br />
+	<button ng-show="editing" ng-click="addArticle()">Ajouter</button>
+    <select ng-model="selectedArticle" ng-show="editing" class="form-control" ng-options="article.name for article in articles">
+    <option disabled value="">-- Choisissez l'articles --</option>

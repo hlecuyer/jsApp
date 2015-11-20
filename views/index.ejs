@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<title>Test nodeJs</title>
+		<link rel='stylesheet' href='/stylesheets/style.css' />
+	</head>
+	<body>
+		<ng-view></ng-view>
+
+		<!-- Libraries -->
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.min.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-resource.min.js"></script>
+
+		<!-- Config des routes -->
+		<script>
+			var app = angular.module('app',  ['ngRoute', 'ngResource'])
+
+
+			//---------------
+			// Routes
+			//---------------
+
+			.config(['$routeProvider', function ($routeProvider) {
+				$routeProvider
+				.when('/articles', {
+					templateUrl: 'views/articles.html',
+					controller: 'ArticleController'
+				})
+				.when('/', {
+					templateUrl: 'views/orders.html',
+					controller: 'OrderController'
+				})
+				.when('/orders/:id', {
+					templateUrl: 'views/orderDetails.html',
+					controller: 'OrderDetailsCtrl'
+				})
+				.when('/articles/:id', {
+					templateUrl: 'views/articleDetails.html',
+					controller: 'ArticleDetailCtrl'
+				});
+			}]);
+		</script>
+		<!-- inclusion de mes scripts -->
+		<script src="js/services/articles.js"></script>
+		<script src="js/services/orders.js"></script>
+		<script src="js/services/articleDirective.js"></script>
+		<script src="js/controllers/articles.js"></script>
+		<script src="js/controllers/articleDetails.js"></script>
+		<script src="js/controllers/orders.js"></script>
+		<script src="js/controllers/orderDetails.js"></script>
+	</body>
+</html>

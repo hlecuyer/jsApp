@@ -1,0 +1,12 @@
+
+<h1> Liste des commandes </h1>
+Search: <input type="text" ng-model="search._id">
+<ul>
+	<li ng-repeat="(index, order) in orders | filter: search">
+		Numero de commande: <a href="#/orders/{{order._id}}">{{order._id}}</a><br/>
+		Heure de livraison: {{order.deliveryDate | date:"HH:mm:ss"}}<br />
+		Status : {{order.status}} <button ng-show="order.status == 'En cours'" ng-click="changeStatus(index)">Commande terminee</button><br /><br />
+	</li>
+</ul>
+<button ng-click="save()">Nouvelle commande</button>
+<button ng-click="goToArticles()">Voir les articles</button>

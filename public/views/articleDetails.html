@@ -1,0 +1,12 @@
+	<h1>Detail pour l'article {{ article.name }}</h1>
+	<p ng-show="!editing">Denomination: {{ article.name }}</p>
+	<p ng-show="!editing">Prix: {{ article.price }} </p>
+	<p ng-show="!editing">Reference:  {{ article.reference }} </p>
+	<button ng-show="!editing" ng-click="edit()">edit</button>
+	<button ng-show="!editing" ng-click="remove()">remove</button>
+	<p ng-show="editing">Denomination: </p><input ng-show="editing" type="text" ng-model="article.name">
+	<p ng-show="editing">Prix: </p><input ng-show="editing" type="number" ng-model="article.price">
+	<p ng-show="editing">Reference: </p><input ng-show="editing" type="text" ng-model="article.reference">
+	<br /><br />
+	<button ng-show="editing" ng-click="update()">Update</button>
+	<button ng-show="editing" ng-click="cancel()">Cancel</button>
