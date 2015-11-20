@@ -80,9 +80,10 @@ router.put('/:id/removeArticle', function(req, res, next) {
 	Order.findById(req.params.id, function (err, post) {
 		if (err)
 			return next(err);
-		post.removeArticle(req.body._id, function (err) {
+		console.log(req.body);
+		post.removeArticle(req.body.articleId._id, function (err) {
 			if (err){
-				console.log(err);
+				console.log('erreur remove :', err);
 				return next(err);
 			}
 			res.json(post);

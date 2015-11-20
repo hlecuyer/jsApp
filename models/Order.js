@@ -22,14 +22,16 @@ OrderSchema.methods = {
 //[hugo]Ajout d'une methode pour suppression d'un article.
 	removeArticle: function (articleId, cb) {
 		var arrayLength = this.articles.length;
+		console.log('articleId', articleId);
+		console.log('arrayLength', arrayLength);
 		//[hugo]Recherche de l'article dans la liste.
 		for (var index = 0; index < arrayLength; ++index) {
 			if (this.articles[index]['articleId'] == articleId){
+				console.log('articleId vire :', this.articles[index]['articleId'], index);
 				break;
 			}
 		}
-		//index s'incremente en sortant de la boucle.
-		index--;
+		console.log('index', index);
 		//suppression
 		if (index < arrayLength){
 			this.articles.splice(index, 1);

@@ -18,7 +18,9 @@ app.controller('OrderDetailsCtrl', ['$scope', '$routeParams', 'Orders', 'Article
 		}
 	}
 	$scope.removeArticle = function(index){
-		Orders.removeArticle.update({id: $scope.order._id}, $scope.articles[index], function(){
+		console.log('index', index);
+		console.log('article', $scope.order.articles[index]);
+		Orders.removeArticle.update({id: $scope.order._id}, $scope.order.articles[index], function(){
 			$scope.order = Orders.orders.get({id: $routeParams.id });
 		});
 	}
